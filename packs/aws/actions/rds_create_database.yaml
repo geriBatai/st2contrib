@@ -64,7 +64,7 @@ parameters:
     default: false
     type: boolean
   module_path:
-    default: boto.rds.connection
+    default: boto.rds
     immutable: true
     type: string
 runner_type: run-python
