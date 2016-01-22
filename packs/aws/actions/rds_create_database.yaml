@@ -13,7 +13,6 @@ parameters:
     type: string
   id:
     type: string
-    immutable: true
     required: true
   allocated_storage:
     type: integer
