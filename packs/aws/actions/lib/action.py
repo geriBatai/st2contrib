@@ -29,6 +29,11 @@ class BaseAction(Action):
         del self.setup['region']
         return boto.route53.connection.Route53Connection(**self. setup)
 
+    def rds_connect(self):
+        region = self.setup['region']
+        del self.setup['region']
+        return boto.rds.connect_to_region(region, **self.setup)
+
     def get_r53zone(self, zone):
         conn = self.r53_connect()
         return conn.get_zone(zone)
@@ -80,6 +85,8 @@ class BaseAction(Action):
             zone = kwargs['zone']
             del kwargs['zone']
             obj = self.get_r53zone(zone)
+        elif cls == 'RDSConnection':
+            obj = self.rds_connect()
         else:
             if cls == 'Route53Connection':
                 del self.setup['region']
