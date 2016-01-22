@@ -1,4 +1,4 @@
-description: ''
+description: 'Creates RDS database'
 enabled: true
 entry_point: run.py
 name: rds_create_database
@@ -25,11 +25,9 @@ parameters:
     default: db.m1.small
   master_username:
     type: string
-    immutable: true
     required: true
   master_password:
     type: string
-    immutable: true
     required: true
   engine:
     type: string
