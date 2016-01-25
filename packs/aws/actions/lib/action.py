@@ -6,6 +6,8 @@ import boto.ec2
 import boto.route53
 import boto.rds
 
+import pprint
+
 from st2actions.runners.pythonrunner import Action
 from ec2parsers import ResultSets
 
@@ -33,7 +35,10 @@ class BaseAction(Action):
     def rds_connect(self):
         region = self.setup['region']
         del self.setup['region']
-        return boto.rds.connect_to_region(region, **self.setup)
+        conn = boto.rds.connect_to_region(region, **self.setup)
+        pp = pprint.PrettyPrinter(indent=4)
+        pp.pprint(conn)
+        return conn
 
     def get_r53zone(self, zone):
         conn = self.r53_connect()
