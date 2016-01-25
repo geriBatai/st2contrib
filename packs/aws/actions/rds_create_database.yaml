@@ -11,6 +11,10 @@ parameters:
     default: RDSConnection
     immutable: true
     type: string
+  region:
+    default: 'us-east-1'
+    type: string
+    required: true
   id:
     type: string
     required: true

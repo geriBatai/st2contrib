@@ -86,7 +86,9 @@ class BaseAction(Action):
             del kwargs['zone']
             obj = self.get_r53zone(zone)
         elif cls == 'RDSConnection':
-            obj = self.rds_connect()
+            region = self.setup['region']
+            del self.setup['region']
+            obj = self.rds_connect_to_region(region)
         else:
             if cls == 'Route53Connection':
                 del self.setup['region']
