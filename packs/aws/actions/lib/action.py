@@ -35,6 +35,7 @@ class BaseAction(Action):
     def rds_connect(self):
         region = self.setup['region']
         del self.setup['region']
+        print("Region: %s" % region)
         conn = boto.rds.connect_to_region(region, **self.setup)
         pp = pprint.PrettyPrinter(indent=4)
         pp.pprint(conn)
@@ -92,7 +93,6 @@ class BaseAction(Action):
             del kwargs['zone']
             obj = self.get_r53zone(zone)
         elif cls == 'RDSConnection':
-            print("RDSConnection")
             obj = self.rds_connect()
         else:
             if cls == 'Route53Connection':
