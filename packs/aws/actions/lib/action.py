@@ -4,6 +4,7 @@ import importlib
 
 import boto.ec2
 import boto.route53
+import boto.rds
 
 from st2actions.runners.pythonrunner import Action
 from ec2parsers import ResultSets
@@ -86,6 +87,7 @@ class BaseAction(Action):
             del kwargs['zone']
             obj = self.get_r53zone(zone)
         elif cls == 'RDSConnection':
+
             obj = self.rds_connect()
         else:
             if cls == 'Route53Connection':
