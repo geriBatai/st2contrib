@@ -88,7 +88,7 @@ class BaseAction(Action):
         elif cls == 'RDSConnection':
             region = self.setup['region']
             del self.setup['region']
-            obj = self.rds_connect_to_region(region)
+            obj = self.connect_to_region(region)
         else:
             if cls == 'Route53Connection':
                 del self.setup['region']
