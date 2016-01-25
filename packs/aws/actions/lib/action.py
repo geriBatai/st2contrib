@@ -92,7 +92,7 @@ class BaseAction(Action):
             del kwargs['zone']
             obj = self.get_r53zone(zone)
         elif cls == 'RDSConnection':
-            puts "RDSConnection"
+            print("RDSConnection")
             obj = self.rds_connect()
         else:
             if cls == 'Route53Connection':
